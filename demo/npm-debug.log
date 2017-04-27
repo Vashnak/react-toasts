@@ -1,0 +1,30 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@4.1.2
+3 info using node@v7.7.4
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/home/anthony/Workspace/react-toasts/demo',
+7 silly cache add   type: 'local' }
+8 error addLocal Could not install /home/anthony/Workspace/react-toasts/demo
+9 verbose stack Error: EISDIR: illegal operation on a directory, read
+10 verbose cwd /home/anthony/Workspace/react-toasts/demo
+11 error Linux 4.9.3-040903-generic
+12 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+13 error node v7.7.4
+14 error npm  v4.1.2
+15 error code EISDIR
+16 error errno -21
+17 error syscall read
+18 error eisdir EISDIR: illegal operation on a directory, read
+19 error eisdir This is most likely not a problem with npm itself
+19 error eisdir and is related to npm not being able to find a package.json in
+19 error eisdir a package you are trying to install.
+20 verbose exit [ -21, true ]

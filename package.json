@@ -1,0 +1,40 @@
+{
+  "name": "react-toasts",
+  "version": "1.0.4",
+  "description": "Simple react alerter",
+  "main": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "./node_modules/nwb/lib/bin/nwb.js build-demo && ./node_modules/gh-pages/bin/gh-pages -d demo/dist"
+  },
+  "repository": "Vashnak/react-toasts",
+  "engines": {
+    "node": ">=6",
+    "npm": ">=3"
+  },
+  "keywords": [
+    "react",
+    "toast",
+    "toaster",
+    "alert",
+    "alerter"
+  ],
+  "dependencies": {
+    "gh-pages": "^0.12.0",
+    "nwb": "^0.15.6",
+    "react": "15.5.4",
+    "react-transition-group": "1.1.2",
+    "watchable-store": "1.0.4"
+  },
+  "author": "Vashnak",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/Vashnak/react-toasts/issues"
+  },
+  "homepage": "https://github.com/Vashnak/react-toasts",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
