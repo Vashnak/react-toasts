@@ -12368,32 +12368,54 @@ module.exports = ReactMultiChild;
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_toasts__["a" /* ToastContainer */], { store: __WEBPACK_IMPORTED_MODULE_1_react_toasts__["b" /* ToastStore */] }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
+          { className: 'text' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'h1',
+            null,
+            'Welcome to react-toasts test page'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'span',
+            null,
+            'This page is currently using the component default values. ',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+            'Check my page ',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { href: 'https://github.com/Vashnak/react-toasts' },
+              'https://github.com/Vashnak/react-toasts'
+            ),
+            ' to know what options you can use.'
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
           { className: 'buttons' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'button buttonSuccess', onClick: function onClick() {
-                __WEBPACK_IMPORTED_MODULE_1_react_toasts__["b" /* ToastStore */].success("ça marche !", 6000);
+                __WEBPACK_IMPORTED_MODULE_1_react_toasts__["b" /* ToastStore */].success("It works !");
               } },
             'Success'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'button buttonInfo', onClick: function onClick() {
-                __WEBPACK_IMPORTED_MODULE_1_react_toasts__["b" /* ToastStore */].info("c'est pas mal n'empêche :)");
+                __WEBPACK_IMPORTED_MODULE_1_react_toasts__["b" /* ToastStore */].info("It's pretty cool :)");
               } },
             'Info'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'button buttonWarning', onClick: function onClick() {
-                __WEBPACK_IMPORTED_MODULE_1_react_toasts__["b" /* ToastStore */].warning("il y a quelques bugs :/");
+                __WEBPACK_IMPORTED_MODULE_1_react_toasts__["b" /* ToastStore */].warning("Ho, I found a bug :/");
               } },
             'Warning'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'button buttonError', onClick: function onClick() {
-                __WEBPACK_IMPORTED_MODULE_1_react_toasts__["b" /* ToastStore */].error("ça marche pas putain x(");
+                __WEBPACK_IMPORTED_MODULE_1_react_toasts__["b" /* ToastStore */].error("Haaa it doesn't work anymore x(");
               } },
             'Error'
           )
