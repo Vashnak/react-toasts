@@ -19,7 +19,6 @@ $ npm install -S react-toasts
 You have to import both variables : ToastContainer and ToastStore
 
 
-First install it as a dependency
 ``` js
 import {ToastContainer, ToastStore} from 'react-toasts';
 ```
@@ -27,7 +26,7 @@ import {ToastContainer, ToastStore} from 'react-toasts';
 ToastContainer is (thx captain obvious) the container of your toasts :).
 ToastStore will permit you to send toasts to the container.
 
-You can know start to use it
+You can now start to use it
 
 ``` html
 <ToastContainer store={ToastStore}/>
