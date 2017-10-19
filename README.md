@@ -40,4 +40,9 @@ Now you can simply call one of the 4 functions of the ToastStore :
 - **warning(message, timer)** : yellow toast.
 - **error(message, timer)** : red toast.
 
+Like this: 
+``` js
+ToastStore.success('Hey, it worked !');
+```
+
 The **timer** parameter is optional, the default value is 3000ms. Your message cannot contain html atm.
