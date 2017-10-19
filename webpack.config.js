@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
-    devtool: 'nosources-source-map',
+    devtool: 'source-map',
     entry: './src/index.js',
     output: {
         filename: 'dist/react-toasts.js',
@@ -26,7 +26,7 @@ module.exports = {
             {
                 test: /\.css/,
                 exclude: /node_modules/,
-                loader: 'css-loader'
+                loader: ['style-loader', 'css-loader']
             }
         ]
     },
