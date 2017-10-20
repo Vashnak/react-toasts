@@ -1,6 +1,6 @@
 {
   "name": "react-toasts",
-  "version": "1.2.1",
+  "version": "1.1.1",
   "description": "Simple react alerter",
   "main": "./src/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "react-transition-group": "^1.1.2",
-    "watchable-store": "1.0.4"
+    "watchable-stores": "^1.0.0"
   },
   "author": "Vashnak",
   "license": "WTFPL",

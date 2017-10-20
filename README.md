@@ -7,6 +7,8 @@ react-toasts is a very simple component to create toasts.
 
 ![alt text](https://github.com/Vashnak/react-toasts/blob/master/demo.gif?raw=true)
 
+Demo's url : https://vashnak.github.io/react-toasts/
+
 # How to use
 
 First install it as a dependency

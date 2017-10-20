@@ -11,9 +11,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _watchableStore = require('watchable-store');
+var _watchableStores = require('watchable-stores');
 
-var _watchableStore2 = _interopRequireDefault(_watchableStore);
+var _watchableStores2 = _interopRequireDefault(_watchableStores);
 
 var _reactTransitionGroup = require('react-transition-group');
 
@@ -30,7 +30,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Store = function Store() {
-    var store = (0, _watchableStore2.default)({
+    var store = (0, _watchableStores2.default)({
         action: '',
         message: ''
     }, { disableDeepFreeze: true });
