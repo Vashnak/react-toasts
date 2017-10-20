@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "react-transition-group": "^1.1.2",
-    "watchable-stores": "^1.0.0"
+    "watchable-stores": "^1.0.1"
   },
   "author": "Vashnak",
   "license": "WTFPL",
