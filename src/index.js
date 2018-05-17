@@ -23,6 +23,9 @@ const Toasts = styled.div`
   overflow: hidden;
   max-height: calc(100vh - 10px);
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `;
 
 const Toast = styled.div`
