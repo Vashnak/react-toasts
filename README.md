@@ -11,7 +11,6 @@ Demo's url : https://vashnak.github.io/react-toasts/
 
 # How to use
 
-First install it as a dependency
 ``` sh
 $ npm install -S react-toasts
 ```
@@ -21,20 +20,20 @@ You have to import both variables : ToastContainer and ToastStore
 
 ``` js
 import {ToastContainer, ToastStore} from 'react-toasts';
+
+function render(){
+    return <div>
+        <button onClick={() => ToastStore.error("There is an error :'(")}>Click me !</button>
+        <ToastContainer store={ToastStore}/>
+    </div>
+}
 ```
 
-ToastContainer is (thx captain obvious) the container of your toasts :).
-ToastStore will permit you to send toasts to the container.
+ToastContainer is the container and ToastStore is the toast manager.
 
-You can now start to use it
+You have to set the ToastStore as parameter like in the example, it won't work if you forget it.
 
-``` html
-<ToastContainer store={ToastStore}/>
-```
-
-As you can see you need to set the ToastStore as parameter, it won't work if you forget it.
 Now you can simply call one of the 4 functions of the ToastStore :
-
 - **success(message, timer)** : green toast.
 - **info(message, timer)** : white toast.
 - **warning(message, timer)** : yellow toast.
@@ -46,3 +45,10 @@ ToastStore.success('Hey, it worked !');
 ```
 
 The **timer** parameter is optional, the default value is 3000ms. Your message cannot contain html atm.
+
+The container can have 4 positions, TOP_RIGHT, TOP_LEFT, BOTTOM_RIGHT, BOTTOM_LEFT. By default
+it is position BOTTOM_RIGHT. You can change it by using the property "position" on the ToastContainer element
+
+``` html
+<ToastContainer position={ToastContainer.POSITION.TOP_LEFT}/>
+```

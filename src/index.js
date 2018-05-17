@@ -1,157 +1,163 @@
-'use strict';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import WatchableStore from 'watchable-stores';
+import PropType from 'prop-types';
+import styled, { keyframes } from 'styled-components';
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.ToastContainer = exports.ToastStore = undefined;
+const FadeInUp = keyframes`
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+`;
 
-var _react = require('react');
+const Toasts = styled.div`
+  position: absolute;
+  overflow: hidden;
+  max-height: calc(100vh - 10px);
+  text-align: right;
+`;
 
-var _react2 = _interopRequireDefault(_react);
+const Toast = styled.div`
+  font-family: 'Arial';
+  padding: 5px 15px;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  animation-name: ${FadeInUp};
+  animation-duration: 1s;
+  animation-fill-mode: both;
+`;
 
-var _watchableStores = require('watchable-stores');
-
-var _watchableStores2 = _interopRequireDefault(_watchableStores);
-
-var _reactTransitionGroup = require('react-transition-group');
-
-require('./animate.css');
-
-require('./styles.css');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Store = function Store() {
-    var store = (0, _watchableStores2.default)({
-        action: '',
-        message: ''
-    }, { disableDeepFreeze: true });
-
-    store.success = function (message, timer) {
-        store.data = {
-            status: 'success',
-            message: message,
-            timer: timer
-        };
-    };
-
-    store.info = function (message, timer) {
-        this.data = {
-            status: 'info',
-            message: message,
-            timer: timer
-        };
-    };
-
-    store.warning = function (message, timer) {
-        this.data = {
-            status: 'warning',
-            message: message,
-            timer: timer
-        };
-    };
-
-    store.error = function (message, timer) {
-        this.data = {
-            status: 'error',
-            message: message,
-            timer: timer
-        };
-    };
-
-    return store;
+const BackgroundColor = {
+  success: {
+    backgroundColor: "rgba(46, 204, 113, 1)"
+  },
+  info: {
+    backgroundColor: "rgba(236, 240, 241, 1)"
+  },
+  warning: {
+    backgroundColor: "rgba(241, 196, 15, 1)"
+  },
+  error: {
+    backgroundColor: "rgba(231, 76, 60, 1)"
+  }
 };
 
-var Container = function (_Component) {
-    _inherits(Container, _Component);
+const Store = () => {
+  const store = WatchableStore({
+    action: '',
+    message: ''
+  });
 
-    function Container(props) {
-        _classCallCheck(this, Container);
+  ['success', 'info', 'warning', 'error'].forEach(status => {
+    store[status] = (message, timer) => {
+      store.data = {
+        status,
+        message,
+        timer
+      };
+    };
+  });
 
-        var _this = _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).call(this, props));
+  return store;
+};
 
-        _this.state = {
-            toasts: [],
-            styles: {}
-        };
-        return _this;
+class Container extends Component {
+  static POSITION = {
+    TOP_LEFT: "top_left",
+    TOP_RIGHT: "top_right",
+    BOTTOM_LEFT: "bottom_left",
+    BOTTOM_RIGHT: "bottom_right"
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      styles: {},
+      toasts: []
+    };
+  }
+
+  componentDidMount() {
+    this.storeSubscription = this.props.store.watch(data => {
+      let toast = Object.assign({}, { ...data, id: Math.random() });
+      this.setState({ toasts: [toast].concat(this.state.toasts) });
+      setTimeout(() => {
+        this.setState({ toasts: this.state.toasts.filter(t => t.id !== toast.id) });
+      }, data.timer || 3000);
+    });
+
+    let styles = {};
+    switch (this.props.position) {
+      case Container.POSITION.TOP_LEFT:
+        styles.top = 10;
+        styles.left = 10;
+        break;
+      case Container.POSITION.TOP_RIGHT:
+        styles.top = 10;
+        styles.right = 10;
+        break;
+      case Container.POSITION.BOTTOM_LEFT:
+        styles.bottom = 10;
+        styles.left = 10;
+        break;
+      case Container.POSITION.BOTTOM_RIGHT:
+        styles.bottom = 10;
+        styles.right = 10;
+        break;
+      default:
+        styles.bottom = 10;
+        styles.right = 10;
+        break;
     }
+    this.setState({ styles: styles });
+  }
 
-    _createClass(Container, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var _this2 = this;
+  componentWillUnmount() {
+    this.props.store.unwatch(this.storeSubscription);
+  }
 
-            var store = this.props.store;
-            this.storeSubscription = store.watch(function (data) {
-                var id = Math.random();
-                var toasts = _this2.state.toasts;
-                data.id = id;
-                toasts.push(data);
-                _this2.setState({ toasts: toasts });
-                setTimeout(function () {
-                    _this2.setState({ toasts: _this2.state.toasts.filter(function (toast) {
-                            return toast.id !== id;
-                        }) });
-                }, data.timer || 3000);
-            });
-
-            var styles = {};
-            switch (this.props.style) {
-                case "top left":
-                    styles.top = 10;
-                    styles.left = 10;
-                    break;
-                case "top right":
-                    styles.top = 10;
-                    styles.right = 10;
-                    break;
-                case "bottom left":
-                    styles.bottom = 10;
-                    styles.left = 10;
-                    break;
-                case "bottom right":
-                    styles.bottom = 10;
-                    styles.right = 10;
-                    break;
-                default:
-                    styles.top = 10;
-                    styles.right = 10;
-                    break;
-            }
-            this.setState({ styles: styles });
+  _renderContainer() {
+    return (
+      <Toasts style={this.state.styles}>
+        {
+          this.state.toasts.map(toast => {
+            return (
+              <Toast
+                key={toast.id}
+                style={BackgroundColor[toast.status]}
+              >
+                {toast.message}
+              </Toast>
+            );
+          })
         }
-    }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            this.props.store.unwatch(this.storeSubscription);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement('div', { className: 'react-toasts-container', style: this.state.styles }, this.state.toasts.map(function (toast) {
-                return _react2.default.createElement('div', { key: toast.id }, _react2.default.createElement(_reactTransitionGroup.CSSTransitionGroup, {
-                    transitionName: 'react-toasts-animation',
-                    transitionAppear: true,
-                    transitionAppearTimeout: 500,
-                    transitionEnter: false,
-                    transitionLeave: false
-                }, _react2.default.createElement('div', { className: "react-toasts " + toast.status }, toast.message)));
-            }));
-        }
-    }]);
+      </Toasts>
+    );
+  }
 
-    return Container;
-}(_react.Component);
+  render() {
+    return ReactDOM.createPortal(
+      this._renderContainer(),
+      document.body
+    );
+  }
+}
 
-var ToastStore = exports.ToastStore = Store();
+Container.PropTypes = {
+  store: PropType.object.required,
+  position: PropType.string
+};
 
-var ToastContainer = exports.ToastContainer = Container;
+export const ToastStore = Store();
+export const ToastContainer = Container;
