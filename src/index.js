@@ -21,6 +21,7 @@ const FadeInUp = keyframes`
 const Toasts = styled.div`
   position: absolute;
   overflow: hidden;
+  z-index: 9999;
   max-height: calc(100vh - 10px);
   text-align: right;
   display: flex;
@@ -30,6 +31,8 @@ const Toasts = styled.div`
 
 const Toast = styled.div`
   font-family: 'Arial';
+  display: flex;
+  align-items: center;
   padding: 5px 15px;
   height: 50px;
   line-height: 50px;
