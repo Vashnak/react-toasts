@@ -1,12 +1,10 @@
 [![npm](https://img.shields.io/npm/l/react-toasts.svg)](https://www.npmjs.com/package/react-toasts)
 [![npm](https://img.shields.io/npm/v/react-toasts.svg)](https://www.npmjs.com/package/react-toasts)
 
-Lightweight react alerter
+Lightweight react toasts manager
 ==========
 
-# React-toasts
-
-react-toasts is a very simple component to create toasts.
+react-toasts is a very simple and lightweight component to create toasts.
 
 ![alt text](https://github.com/Vashnak/react-toasts/blob/master/demo.gif?raw=true)
 
@@ -18,7 +16,7 @@ Demo url : https://vashnak.co/react-toasts/
 $ npm install -S react-toasts
 ```
 
-You have to import both variables : ToastContainer and ToastStore
+You have to import 2 modules : ToastContainer and ToastStore
 
 
 ``` js
@@ -32,9 +30,9 @@ function render(){
 }
 ```
 
-ToastContainer is the container and ToastStore is the toast manager.
+ToastContainer is the container and ToastStore is the toasts manager.
 
-You have to set the ToastStore as parameter like in the example, it won't work if you forget it.
+You have to set the ToastStore as parameter of ToastContainer (example just before), it won't work if you forget it.
 
 Now you can simply call one of the 4 functions of the ToastStore :
 - **success(message, timer)** : green toast.
@@ -47,10 +45,10 @@ Like this:
 ToastStore.success('Hey, it worked !');
 ```
 
-The **timer** parameter is optional, the default value is 3000ms. Your message cannot contain html atm.
+The **timer** parameter is optional and its default value is 3000ms.
 
 The container can have 4 positions, TOP_RIGHT, TOP_LEFT, BOTTOM_RIGHT, BOTTOM_LEFT. By default
-it is position BOTTOM_RIGHT. You can change it by using the property "position" on the ToastContainer element
+its position is BOTTOM_RIGHT. You can change it by using the property "position" on the ToastContainer element
 
 ``` html
 <ToastContainer position={ToastContainer.POSITION.TOP_LEFT}/>
