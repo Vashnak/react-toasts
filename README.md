@@ -1,4 +1,7 @@
-Simple react alerter
+[![npm](https://img.shields.io/npm/l/react-toasts.svg)](https://www.npmjs.com/package/react-toasts)
+[![npm](https://img.shields.io/npm/v/react-toasts.svg)](https://www.npmjs.com/package/react-toasts)
+
+Lightweight react alerter
 ==========
 
 # React-toasts
@@ -7,7 +10,7 @@ react-toasts is a very simple component to create toasts.
 
 ![alt text](https://github.com/Vashnak/react-toasts/blob/master/demo.gif?raw=true)
 
-Demo's url : https://vashnak.github.io/react-toasts/
+Demo url : https://vashnak.co/react-toasts/
 
 # How to use
 

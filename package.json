@@ -1,6 +1,6 @@
 {
   "name": "react-toasts",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Simple react alerter.",
   "main": "build/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "url": "git+https://github.com/Vashnak/react-toasts.git"
   },
   "author": "Vashnak <anthony.sarais@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [
     "react",
     "toast",
