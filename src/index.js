@@ -35,7 +35,7 @@ const Toast = styled.div`
   align-items: center;
   padding: 5px 15px;
   white-space: pre-line;
-  height: 50px;
+  min-height: 50px;
   margin-bottom: 15px;
   border-radius: 5px;
   animation-name: ${FadeInUp};
