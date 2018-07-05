@@ -1,6 +1,6 @@
 {
   "name": "react-toasts",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "description": "Simple react alerter.",
   "main": "build/index.js",
   "scripts": {
@@ -20,9 +20,15 @@
   "keywords": [
     "react",
     "toast",
+    "toasts",
     "toaster",
     "alert",
-    "alerter"
+    "alerter",
+    "push",
+    "notification",
+    "notify",
+    "react-component",
+    "react-toasts"
   ],
   "bugs": {
     "url": "https://github.com/Vashnak/react-toasts/issues"
