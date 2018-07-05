@@ -53,3 +53,7 @@ its position is BOTTOM_RIGHT. You can change it by using the property "position"
 ``` html
 <ToastContainer position={ToastContainer.POSITION.TOP_LEFT}/>
 ```
+
+# Updates
+### 2.0.7
+Now support line break in toasts (\n).

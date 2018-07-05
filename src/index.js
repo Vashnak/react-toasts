@@ -34,8 +34,8 @@ const Toast = styled.div`
   display: flex;
   align-items: center;
   padding: 5px 15px;
+  white-space: pre-line;
   height: 50px;
-  line-height: 50px;
   margin-bottom: 15px;
   border-radius: 5px;
   animation-name: ${FadeInUp};
