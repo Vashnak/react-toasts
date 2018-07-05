@@ -65,11 +65,12 @@ const Store = () => {
     });
 
     ['success', 'info', 'warning', 'error'].forEach(status => {
-        store[status] = (message, timer) => {
+        store[status] = (message, timer, classNames) => {
             store.data = {
                 status,
                 message,
-                timer
+                timer,
+                classNames
             };
         };
     });
@@ -141,7 +142,7 @@ class Container extends Component {
                         return (
                             <Toast
                                 key={toast.id}
-                                className={'toast toast-' + toast.status}
+                                className={'toast toast-' + toast.status + ' ' + toast.classNames}
                                 style={BackgroundColor[toast.status]}
                             >
                                 {toast.message}

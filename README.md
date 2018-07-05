@@ -35,10 +35,10 @@ ToastContainer is the container and ToastStore is the toasts manager.
 You have to set the ToastStore as parameter of ToastContainer (example just before), it won't work if you forget it.
 
 Now you can simply call one of the 4 functions of the ToastStore :
-- **success(message, timer)** : green toast.
-- **info(message, timer)** : white toast.
-- **warning(message, timer)** : yellow toast.
-- **error(message, timer)** : red toast.
+- **success(message: string, timer?: number = 3000, classNames?: string)** : green toast.
+- **info(message: string, timer?: number = 3000, classNames?: string)** : white toast.
+- **warning(message: string, timer?: number = 3000, classNames?: string)** : yellow toast.
+- **error(message: string, timer?: number = 3000, classNames?: string)** : red toast.
 
 Like this: 
 ``` js
@@ -46,6 +46,7 @@ ToastStore.success('Hey, it worked !');
 ```
 
 The **timer** parameter is optional and its default value is 3000ms.
+The **classNames** parameter is also optional, if you have multiple classes to add, please separate them with a space ("class1 class2 ...").
 
 The container can have 4 positions, TOP_RIGHT, TOP_LEFT, BOTTOM_RIGHT, BOTTOM_LEFT. By default
 its position is BOTTOM_RIGHT. You can change it by using the property "position" on the ToastContainer element
@@ -59,3 +60,5 @@ its position is BOTTOM_RIGHT. You can change it by using the property "position"
 Now support line break in toasts (\n).
 ### 2.0.8
 Added a class on each toasts.
+### 2.0.9
+Can now add custom classes to toasts.
