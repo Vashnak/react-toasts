@@ -57,3 +57,5 @@ its position is BOTTOM_RIGHT. You can change it by using the property "position"
 # Updates
 ### 2.0.7
 Now support line break in toasts (\n).
+### 2.0.8
+Added a class on each toasts.
