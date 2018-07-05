@@ -1,6 +1,6 @@
 {
   "name": "react-toasts",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Simple react alerter.",
   "main": "build/index.js",
   "scripts": {
