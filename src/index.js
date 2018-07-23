@@ -58,6 +58,29 @@ const BackgroundColor = {
   }
 };
 
+const LightBackgroundColor = {
+  success: {
+    color: '#468847',
+    backgroundColor: '#dff0d8',
+    borderColor: '#d6e9c6',
+  },
+  info: {
+    color: '#3a87ad',
+    backgroundColor: '#d9edf7',
+    borderColor: '#bce8f1',
+  },
+  warning: {
+    color: '#c09853',
+    backgroundColor: '#fcf8e3',
+    borderColor: '#fbeed5',
+  },
+  error: {
+    color: '#b94a48',
+    backgroundColor: '#f2dede',
+    borderColor: '#eed3d7',
+  }
+}
+
 const Store = () => {
   const store = WatchableStore({
     action: '',
@@ -83,7 +106,9 @@ class Container extends Component {
     TOP_LEFT: "top_left",
     TOP_RIGHT: "top_right",
     BOTTOM_LEFT: "bottom_left",
-    BOTTOM_RIGHT: "bottom_right"
+    BOTTOM_RIGHT: "bottom_right",
+    TOP_CENTER: "top_center",
+    BOTTOM_CENTER: "bottom_center",
   };
 
   constructor(props) {
@@ -114,6 +139,11 @@ class Container extends Component {
         styles.top = 10;
         styles.right = 10;
         break;
+      case Container.POSITION.TOP_CENTER:
+        styles.top = 10;
+        styles.left = '50%';
+        styles.transform = 'translateX(-50%)';
+        break;
       case Container.POSITION.BOTTOM_LEFT:
         styles.bottom = 10;
         styles.left = 10;
@@ -121,6 +151,11 @@ class Container extends Component {
       case Container.POSITION.BOTTOM_RIGHT:
         styles.bottom = 10;
         styles.right = 10;
+        break;
+      case Container.POSITION.BOTTOM_CENTER:
+        styles.bottom = 10;
+        styles.left = '50%';
+        styles.transform = 'translateX(-50%)';
         break;
       default:
         styles.bottom = 10;
@@ -135,6 +170,7 @@ class Container extends Component {
   }
 
   _renderContainer() {
+    const style = this.props.lightBackground ? LightBackgroundColor : BackgroundColor;
     return (
       <Toasts style={this.state.styles}>
         {
@@ -143,7 +179,7 @@ class Container extends Component {
               <Toast
                 key={toast.id}
                 className={'toast toast-' + toast.status + ' ' + toast.classNames}
-                style={BackgroundColor[toast.status]}
+                style={style[toast.status]}
               >
                 {toast.message}
               </Toast>
@@ -163,7 +199,7 @@ class Container extends Component {
 }
 
 Container.propTypes = {
-  store: PropType.object.required,
+  store: PropType.object.isRequired,
   position: PropType.string
 };
 
