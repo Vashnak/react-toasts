@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import WatchableStore from 'watchable-stores';
 import PropType from 'prop-types';
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const FadeInUp = keyframes`
   from {
@@ -44,127 +44,127 @@ const Toast = styled.div`
 `;
 
 const BackgroundColor = {
-    success: {
-        backgroundColor: "rgba(46, 204, 113, 1)"
-    },
-    info: {
-        backgroundColor: "rgba(236, 240, 241, 1)"
-    },
-    warning: {
-        backgroundColor: "rgba(241, 196, 15, 1)"
-    },
-    error: {
-        backgroundColor: "rgba(231, 76, 60, 1)"
-    }
+  success: {
+    backgroundColor: "rgba(46, 204, 113, 1)"
+  },
+  info: {
+    backgroundColor: "rgba(236, 240, 241, 1)"
+  },
+  warning: {
+    backgroundColor: "rgba(241, 196, 15, 1)"
+  },
+  error: {
+    backgroundColor: "rgba(231, 76, 60, 1)"
+  }
 };
 
 const Store = () => {
-    const store = WatchableStore({
-        action: '',
-        message: ''
-    });
+  const store = WatchableStore({
+    action: '',
+    message: ''
+  });
 
-    ['success', 'info', 'warning', 'error'].forEach(status => {
-        store[status] = (message, timer, classNames) => {
-            store.data = {
-                status,
-                message,
-                timer,
-                classNames
-            };
-        };
-    });
+  ['success', 'info', 'warning', 'error'].forEach(status => {
+    store[status] = (message, timer, classNames) => {
+      store.data = {
+        status,
+        message,
+        timer,
+        classNames
+      };
+    };
+  });
 
-    return store;
+  return store;
 };
 
 class Container extends Component {
-    static POSITION = {
-        TOP_LEFT: "top_left",
-        TOP_RIGHT: "top_right",
-        BOTTOM_LEFT: "bottom_left",
-        BOTTOM_RIGHT: "bottom_right"
+  static POSITION = {
+    TOP_LEFT: "top_left",
+    TOP_RIGHT: "top_right",
+    BOTTOM_LEFT: "bottom_left",
+    BOTTOM_RIGHT: "bottom_right"
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      styles: {},
+      toasts: []
     };
+  }
 
-    constructor(props) {
-        super(props);
+  componentDidMount() {
+    this.storeSubscription = this.props.store.watch(data => {
+      let toast = Object.assign({}, { ...data, id: Math.random() });
+      this.setState({ toasts: [toast].concat(this.state.toasts) });
+      setTimeout(() => {
+        this.setState({ toasts: this.state.toasts.filter(t => t.id !== toast.id) });
+      }, data.timer || 3000);
+    });
 
-        this.state = {
-            styles: {},
-            toasts: []
-        };
+    let styles = {};
+    switch (this.props.position) {
+      case Container.POSITION.TOP_LEFT:
+        styles.top = 10;
+        styles.left = 10;
+        break;
+      case Container.POSITION.TOP_RIGHT:
+        styles.top = 10;
+        styles.right = 10;
+        break;
+      case Container.POSITION.BOTTOM_LEFT:
+        styles.bottom = 10;
+        styles.left = 10;
+        break;
+      case Container.POSITION.BOTTOM_RIGHT:
+        styles.bottom = 10;
+        styles.right = 10;
+        break;
+      default:
+        styles.bottom = 10;
+        styles.right = 10;
+        break;
     }
+    this.setState({ styles: styles });
+  }
 
-    componentDidMount() {
-        this.storeSubscription = this.props.store.watch(data => {
-            let toast = Object.assign({}, {...data, id: Math.random()});
-            this.setState({toasts: [toast].concat(this.state.toasts)});
-            setTimeout(() => {
-                this.setState({toasts: this.state.toasts.filter(t => t.id !== toast.id)});
-            }, data.timer || 3000);
-        });
+  componentWillUnmount() {
+    this.props.store.unwatch(this.storeSubscription);
+  }
 
-        let styles = {};
-        switch (this.props.position) {
-            case Container.POSITION.TOP_LEFT:
-                styles.top = 10;
-                styles.left = 10;
-                break;
-            case Container.POSITION.TOP_RIGHT:
-                styles.top = 10;
-                styles.right = 10;
-                break;
-            case Container.POSITION.BOTTOM_LEFT:
-                styles.bottom = 10;
-                styles.left = 10;
-                break;
-            case Container.POSITION.BOTTOM_RIGHT:
-                styles.bottom = 10;
-                styles.right = 10;
-                break;
-            default:
-                styles.bottom = 10;
-                styles.right = 10;
-                break;
+  _renderContainer() {
+    return (
+      <Toasts style={this.state.styles}>
+        {
+          this.state.toasts.map(toast => {
+            return (
+              <Toast
+                key={toast.id}
+                className={'toast toast-' + toast.status + ' ' + toast.classNames}
+                style={BackgroundColor[toast.status]}
+              >
+                {toast.message}
+              </Toast>
+            );
+          })
         }
-        this.setState({styles: styles});
-    }
+      </Toasts>
+    );
+  }
 
-    componentWillUnmount() {
-        this.props.store.unwatch(this.storeSubscription);
-    }
-
-    _renderContainer() {
-        return (
-            <Toasts style={this.state.styles}>
-                {
-                    this.state.toasts.map(toast => {
-                        return (
-                            <Toast
-                                key={toast.id}
-                                className={'toast toast-' + toast.status + ' ' + toast.classNames}
-                                style={BackgroundColor[toast.status]}
-                            >
-                                {toast.message}
-                            </Toast>
-                        );
-                    })
-                }
-            </Toasts>
-        );
-    }
-
-    render() {
-        return ReactDOM.createPortal(
-            this._renderContainer(),
-            document.body
-        );
-    }
+  render() {
+    return ReactDOM.createPortal(
+      this._renderContainer(),
+      document.body
+    );
+  }
 }
 
-Container.PropTypes = {
-    store: PropType.object.required,
-    position: PropType.string
+Container.propTypes = {
+  store: PropType.object.required,
+  position: PropType.string
 };
 
 export const ToastStore = Store();
