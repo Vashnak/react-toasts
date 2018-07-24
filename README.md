@@ -48,11 +48,18 @@ ToastStore.success('Hey, it worked !');
 The **timer** parameter is optional and its default value is 3000ms.
 The **classNames** parameter is also optional, if you have multiple classes to add, please separate them with a space ("class1 class2 ...").
 
-The container can have 4 positions, TOP_RIGHT, TOP_LEFT, BOTTOM_RIGHT, BOTTOM_LEFT. By default
+The container can have 6 positions, TOP_RIGHT, TOP_LEFT, TOP_CENTER, BOTTOM_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER. By default
 its position is BOTTOM_RIGHT. You can change it by using the property "position" on the ToastContainer element
 
 ``` html
 <ToastContainer position={ToastContainer.POSITION.TOP_LEFT}/>
+```
+
+If you want toasts to have light color background, add `lightBackground` true property on the ToastrContainer
+element
+
+``` html
+<ToastContainer position={ToastContainer.POSITION.TOP_LEFT} lightBackground />
 ```
 
 # Updates
