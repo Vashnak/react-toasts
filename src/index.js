@@ -33,6 +33,7 @@ const Toast = styled.div`
   font-family: 'Arial';
   display: flex;
   align-items: center;
+  text-align: center;
   padding: 5px 15px;
   white-space: pre-line;
   min-height: 50px;
