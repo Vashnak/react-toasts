@@ -19,7 +19,7 @@ const FadeInUp = keyframes`
 `;
 
 const Toasts = styled.div`
-  position: absolute;
+  position: fixed;
   overflow: hidden;
   z-index: 9999;
   max-height: calc(100vh - 10px);
