@@ -21,7 +21,7 @@ const FadeInUp = keyframes`
 const Toasts = styled.div`
   position: fixed;
   overflow: hidden;
-  z-index: 9999;
+  z-index: 999999999999;
   max-height: calc(100vh - 10px);
   text-align: right;
   display: flex;
@@ -173,7 +173,7 @@ class Container extends Component {
   _renderContainer() {
     const style = this.props.lightBackground ? LightBackgroundColor : BackgroundColor;
     return (
-      <Toasts style={this.state.styles}>
+      <Toasts style={this.state.styles} className={"toasts-container " + (this.props.className || '')}>
         {
           this.state.toasts.map(toast => {
             return (
