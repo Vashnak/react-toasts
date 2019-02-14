@@ -1,5 +1,5 @@
 [![License](https://img.shields.io/npm/l/react-toasts.svg)](https://www.npmjs.com/package/react-toasts)
-[![Version](https://img.shields.io/npm/v/react-toasts.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/npm/v/react-toasts.svg)](https://opensource.org/licenses/ISC)
 
 Lightweight react toasts manager
 ==========
@@ -16,29 +16,25 @@ Demo url : https://vashnak.co/react-toasts/
 $ npm install -S react-toasts
 ```
 
-You have to import 2 modules : ToastContainer and ToastStore
-
+You will need to import the ToastsContainer component and the ToastsStore.
 
 ``` js
-import {ToastContainer, ToastStore} from 'react-toasts';
+import {ToastsContainer, ToastsStore} from 'react-toasts';
 
 function render(){
     return <div>
-        <button onClick={() => ToastStore.error("There is an error :'(")}>Click me !</button>
-        <ToastContainer store={ToastStore}/>
+        <button onClick={() => ToastsStore.success("Hey, you just clicked!")}>Click me</button>
+        <ToastsContainer store={ToastsStore}/>
     </div>
 }
 ```
 
-ToastContainer is the container and ToastStore is the toasts manager.
+The use is very easy. ToastsContainer is, as its name suggests, the toast container while ToastsStore is the toasts manager.
+The ToastsContainer must be linked to the ToastsStore, so we must set it as a parameter (see the code above). It will not work if you forget it!
 
-You have to set the ToastStore as parameter of ToastContainer (example just before), it won't work if you forget it.
+Now you can simply call one of the 4 functions of the ToastStore (success, info, warning, error):
 
-Now you can simply call one of the 4 functions of the ToastStore :
-- **success(message: string, timer?: number = 3000, classNames?: string)** : green toast.
-- **info(message: string, timer?: number = 3000, classNames?: string)** : white toast.
-- **warning(message: string, timer?: number = 3000, classNames?: string)** : yellow toast.
-- **error(message: string, timer?: number = 3000, classNames?: string)** : red toast.
+**function n(message: string, timer?: number = 3000, classNames?: string): void**
 
 Like this: 
 ``` js
@@ -49,20 +45,21 @@ The **timer** parameter is optional and its default value is 3000ms.
 The **classNames** parameter is also optional, if you have multiple classes to add, please separate them with a space ("class1 class2 ...").
 
 The container can have 6 positions, TOP_RIGHT, TOP_LEFT, TOP_CENTER, BOTTOM_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER. By default
-its position is BOTTOM_RIGHT. You can change it by using the property "position" on the ToastContainer element
+its position is BOTTOM_RIGHT. You can change it by using the enum ToastsContainerPosition
 
 ``` html
-<ToastContainer position={ToastContainer.POSITION.TOP_LEFT}/>
+<ToastContainer position={ToastsContainerPosition.TOP_LEFT}/>
 ```
 
-If you want toasts to have light color background, add `lightBackground` true property on the ToastrContainer
-element
+If you want the toasts to have a light background, add the `lightBackground` property to the ToastsContainer component.
 
 ``` html
-<ToastContainer position={ToastContainer.POSITION.TOP_LEFT} lightBackground />
+<ToastContainer position={ToastContainer.POSITION.TOP_LEFT} lightBackground/>
 ```
 
 # Updates
+### 3.0.0
+Rewrite with typescript, updated typos, optimized build.
 ### 2.0.7
 Now support line break in toasts (\n).
 ### 2.0.8
