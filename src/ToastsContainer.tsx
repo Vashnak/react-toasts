@@ -1,17 +1,17 @@
-import React = require('react');
-import { Component } from 'react';
-import ReactDOM = require('react-dom');
-import { WatchableStore } from 'watchable-stores';
-import { DarkColors, LightColors } from './DefaultColors';
-import { IToastsStore } from './ToastsStore';
+import React = require("react");
+import { Component } from "react";
+import ReactDOM = require("react-dom");
+import { WatchableStore } from "watchable-stores";
+import { DarkColors, LightColors } from "./DefaultColors";
+import { IToastsStore } from "./ToastsStore";
 
 export enum ToastsContainerPosition {
-  BOTTOM_CENTER = 'bottom_center',
-  BOTTOM_LEFT = 'bottom_left',
-  BOTTOM_RIGHT = 'bottom_right',
-  TOP_CENTER = 'top_center',
-  TOP_LEFT = 'top_left',
-  TOP_RIGHT = 'top_right',
+  BOTTOM_CENTER = "bottom_center",
+  BOTTOM_LEFT = "bottom_left",
+  BOTTOM_RIGHT = "bottom_right",
+  TOP_CENTER = "top_center",
+  TOP_LEFT = "top_left",
+  TOP_RIGHT = "top_right",
 }
 
 export interface IToastsContainerProps {
@@ -41,11 +41,11 @@ export class ToastsContainer extends Component<IToastsContainerProps, IToastsCon
   }
 
   public componentDidMount() {
-    this.storeSubscriptionId = this.props.store.watch(data => {
+    this.storeSubscriptionId = this.props.store.watch((data) => {
       const toast = { ...data, id: Math.random() };
       this.setState({ toasts: [toast].concat(this.state.toasts) });
       setTimeout(() => {
-        this.setState({ toasts: this.state.toasts.filter(t => t.id !== toast.id) });
+        this.setState({ toasts: this.state.toasts.filter((t) => t.id !== toast.id) });
       }, data.timer || 3000);
     });
 
@@ -61,8 +61,8 @@ export class ToastsContainer extends Component<IToastsContainerProps, IToastsCon
         break;
       case ToastsContainerPosition.TOP_CENTER:
         styles.top = 10;
-        styles.left = '50%';
-        styles.transform = 'translateX(-50%)';
+        styles.left = "50%";
+        styles.transform = "translateX(-50%)";
         break;
       case ToastsContainerPosition.BOTTOM_LEFT:
         styles.bottom = 10;
@@ -74,8 +74,8 @@ export class ToastsContainer extends Component<IToastsContainerProps, IToastsCon
         break;
       case ToastsContainerPosition.BOTTOM_CENTER:
         styles.bottom = 10;
-        styles.left = '50%';
-        styles.transform = 'translateX(-50%)';
+        styles.left = "50%";
+        styles.transform = "translateX(-50%)";
         break;
       default:
         styles.bottom = 10;
@@ -100,12 +100,12 @@ export class ToastsContainer extends Component<IToastsContainerProps, IToastsCon
     const style = this.props.lightBackground ? LightColors : DarkColors;
     return (
       <div style={this.state.styles}
-           className={'toasts-container ' + (this.props.className || '')}>
+           className={"toasts-container " + (this.props.className || "")}>
         {
-          this.state.toasts.map(toast => {
+          this.state.toasts.map((toast) => {
             return (
               <div key={toast.id}
-                   className={'toast toast-' + toast.status + ' ' + toast.classNames}
+                   className={"toast toast-" + toast.status + " " + toast.classNames}
                    style={style[toast.status]}>
                 {toast.message}
               </div>
