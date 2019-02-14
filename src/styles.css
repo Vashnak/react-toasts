@@ -1,0 +1,38 @@
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+      }
+      to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+      }
+}
+
+.toasts-container {
+  position: fixed;
+  overflow: hidden;
+  z-index: 999999999999;
+  max-height: calc(100vh - 10px);
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.toast {
+  font-family: 'Arial';
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 5px 15px;
+  white-space: pre-line;
+  min-height: 50px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  animation-name: fadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
