@@ -34,7 +34,7 @@ The ToastsContainer must be linked to the ToastsStore, so we must set it as a pa
 
 Now you can simply call one of the 4 functions of the ToastStore (success, info, warning, error):
 
-**function n(message: string, timer?: number = 3000, classNames?: string): void**
+**function n(message: string | HTMLElement, timer?: number = 3000, classNames?: string): void**
 
 Like this: 
 ``` js
@@ -59,7 +59,7 @@ If you want the toasts to have a light background, add the `lightBackground` pro
 
 # Updates
 ### 3.0.0
-Rewrite with typescript, updated typos, optimized build.
+Rewrite with typescript, updated typos, optimized build, now support HTML in toast messages.
 ### 2.0.7
 Now support line break in toasts (\n).
 ### 2.0.8
