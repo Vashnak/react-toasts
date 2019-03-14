@@ -28,6 +28,7 @@ export interface IToastsContainerState {
 
 export class ToastsContainer extends Component<IToastsContainerProps, IToastsContainerState> {
   private storeSubscriptionId: number;
+  private timeout: number;
 
   constructor(props: IToastsContainerProps) {
     super(props);
@@ -38,13 +39,14 @@ export class ToastsContainer extends Component<IToastsContainerProps, IToastsCon
     };
 
     this.storeSubscriptionId = -1;
+    this.timeout = -1;
   }
 
   public componentDidMount() {
     this.storeSubscriptionId = this.props.store.watch((data) => {
       const toast = { ...data, id: Math.random() };
       this.setState({ toasts: [toast].concat(this.state.toasts) });
-      setTimeout(() => {
+      this.timeout = setTimeout(() => {
         this.setState({ toasts: this.state.toasts.filter((t) => t.id !== toast.id) });
       }, data.timer || 3000);
     });
@@ -87,6 +89,7 @@ export class ToastsContainer extends Component<IToastsContainerProps, IToastsCon
 
   public componentWillUnmount() {
     this.props.store.unwatch(this.storeSubscriptionId);
+    clearTimeout(this.timeout);
   }
 
   public render() {
