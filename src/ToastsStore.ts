@@ -2,7 +2,7 @@ import { WatchableStore } from "watchable-stores";
 
 export interface IToastsStore {
     status: string;
-    message: string;
+    message: string | HTMLElement;
     timer: number;
     classNames: string[] | string;
 }
@@ -12,23 +12,23 @@ class Store extends WatchableStore<IToastsStore> {
         super({ status: "", message: "", timer: 0, classNames: "" });
     }
 
-    public success(message: string, timer?: number, classNames?: string | string[]): void {
+    public success(message: string | HTMLElement, timer?: number, classNames?: string | string[]): void {
         this._toast("success", message, timer, classNames);
     }
 
-    public info(message: string, timer?: number, classNames?: string | string[]): void {
+    public info(message: string | HTMLElement, timer?: number, classNames?: string | string[]): void {
         this._toast("info", message, timer, classNames);
     }
 
-    public warning(message: string, timer?: number, classNames?: string | string[]): void {
+    public warning(message: string | HTMLElement, timer?: number, classNames?: string | string[]): void {
         this._toast("warning", message, timer, classNames);
     }
 
-    public error(message: string, timer?: number, classNames?: string | string[]): void {
+    public error(message: string | HTMLElement, timer?: number, classNames?: string | string[]): void {
         this._toast("error", message, timer, classNames);
     }
 
-    private _toast(status: string, message: string, timer?: number, classNames?: string | string[]): void {
+    private _toast(status: string, message: string | HTMLElement, timer?: number, classNames?: string | string[]): void {
         this.data = {
             classNames: classNames || "",
             message,
