@@ -28,7 +28,8 @@ class Store extends WatchableStore<IToastsStore> {
         this._toast("error", message, timer, classNames);
     }
 
-    private _toast(status: string, message: string | HTMLElement, timer?: number, classNames?: string | string[]): void {
+    private _toast(status: string, message: string | HTMLElement, timer?: number, 
+		classNames?: string | string[]): void {
         this.data = {
             classNames: classNames || "",
             message,
