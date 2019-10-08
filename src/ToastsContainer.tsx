@@ -1,6 +1,6 @@
-import React = require("react");
+import * as React from "react";
 import { Component } from "react";
-import ReactDOM = require("react-dom");
+import * as ReactDOM from "react-dom";
 import { WatchableStore } from "watchable-stores";
 import { DarkColors, LightColors } from "./DefaultColors";
 import { IToastsStore } from "./ToastsStore";
