@@ -58,7 +58,7 @@ If you want the toasts to have a light background, add the `lightBackground` pro
 ```
 
 # Updates
-### 3.0.4
+### 3.0.5
 Updated types, fix dependencies vulnerabilities, removed react/react-dom from dev-dependencies and added them into peerDependencies.
 ### 3.0.0
 Rewrite with typescript, updated typos, optimized build, now support HTML in toast messages.
