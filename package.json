@@ -1,6 +1,6 @@
 {
   "name": "react-toasts",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Simple react alerter.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -42,11 +42,16 @@
   "dependencies": {
     "watchable-stores": "^2.0.2"
   },
-  "devDependencies": {
+  "peerDependencies": {
     "@types/react": "^16.8.2",
-    "@types/react-dom": "^16.8.0",
+    "@types/react-dom": "^16.8.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.5",
+    "@types/react-dom": "^16.9.1",
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^2.1.0",
+    "import": "0.0.6",
     "prop-types": "^15.7.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
