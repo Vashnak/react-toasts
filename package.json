@@ -1,6 +1,6 @@
 {
-  "name": "react-toasts",
-  "version": "3.0.5",
+  "name": "@vashnak/react-toasts",
+  "version": "3.0.6",
   "description": "Simple react alerter.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
