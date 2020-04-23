@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 
 module.exports =
@@ -23,10 +22,6 @@ module.exports =
           test: /\.tsx?$/,
           loader: 'awesome-typescript-loader',
           exclude: /node_modules/
-        },
-        {
-          test: /\.css$/,
-          loaders: ['style-loader', 'css-loader'],
         },
       ],
     },
