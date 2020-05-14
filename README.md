@@ -1,5 +1,5 @@
-[![License](https://img.shields.io/npm/l/react-toasts.svg)](https://www.npmjs.com/package/react-toasts)
-[![Version](https://img.shields.io/npm/v/react-toasts.svg)](https://opensource.org/licenses/ISC)
+[![License](https://img.shields.io/npm/l/react-toasts.svg)](https://opensource.org/licenses/ISC)
+[![Version](https://img.shields.io/npm/v/react-toasts.svg)](https://www.npmjs.com/package/react-toasts)
 
 Lightweight react toasts manager
 ==========
