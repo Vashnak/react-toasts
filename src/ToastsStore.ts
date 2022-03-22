@@ -7,7 +7,7 @@ export interface IToastsStore {
     classNames: string[] | string;
 }
 
-class Store extends WatchableStore<IToastsStore> {
+export class Store extends WatchableStore<IToastsStore> {
     constructor() {
         super({status: "", message: "", timer: 0, classNames: ""});
     }

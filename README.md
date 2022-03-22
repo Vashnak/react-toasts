@@ -1,5 +1,5 @@
-[![License](https://img.shields.io/npm/l/react-toasts.svg)](https://www.npmjs.com/package/react-toasts)
-[![Version](https://img.shields.io/npm/v/react-toasts.svg)](https://opensource.org/licenses/ISC)
+[![License](https://img.shields.io/npm/l/react-toasts.svg)](https://opensource.org/licenses/ISC)
+[![Version](https://img.shields.io/npm/v/react-toasts.svg)](https://www.npmjs.com/package/react-toasts)
 
 Lightweight react toasts manager
 ==========
@@ -38,7 +38,7 @@ Now you can simply call one of the 4 functions from the ToastStore (success, inf
 
 Like this: 
 ``` js
-ToastStore.success('Hey, it worked !');
+ToastsStore.success('Hey, it worked !');
 ```
 
 The **timer** parameter is optional and its default value is 3000ms.
@@ -52,7 +52,7 @@ The container can have 6 positions:
 - BOTTOM_LEFT
 - BOTTOM_CENTER. 
 
-By default its position is BOTTOM_RIGHT. You can change it by using the enum ToastsContainerPosition
+By default its position is BOTTOM_RIGHT. You can change it by importing and using the enum ToastsContainerPosition
 
 ``` html
 <ToastContainer position={ToastsContainerPosition.TOP_LEFT}/>
@@ -61,7 +61,7 @@ By default its position is BOTTOM_RIGHT. You can change it by using the enum Toa
 If you want the toasts to have a light background, add the `lightBackground` property to the ToastsContainer component.
 
 ``` html
-<ToastContainer position={ToastContainer.POSITION.TOP_LEFT} lightBackground/>
+<ToastContainer position={ToastsContainerPosition.TOP_LEFT} lightBackground/>
 ```
 
 # Updates
